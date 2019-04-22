@@ -1,13 +1,19 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-      "rootDir": "./src",
-      "types": ["webpack-env"]
-    },
-    "include": [
-      "src/**/*"
-    ],
-    "exclude": [
-      "src/__tests__/**/*"
-    ]
-  }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "es5",
+    "lib": ["es2017", "dom"],
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/__tests__/**/*"]
+}

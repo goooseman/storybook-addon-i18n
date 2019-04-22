@@ -1,0 +1,3 @@
+const config = require('trucknet-commit/commit-prompt.config');
+
+module.exports = config;

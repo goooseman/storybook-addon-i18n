@@ -1,34 +1,49 @@
 {
-    "name": "@storybook/addon-i18n",
-    "version": "5.0.0",
-    "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
-    "keywords": [
-      "addon",
-      "i18n",
-      "react",
-      "storybook"
-    ],
-    "homepage": "https://github.com/goooseman/storybook-addon-i18n",
-    "bugs": {
-      "url": "https://github.com/goooseman/storybook-addon-i18nissues"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/goooseman/storybook-addon-i18n"
-    },
-    "license": "MIT",
-    "author": "goooseman",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-      "prepare": "echo 'TODO build'"
-    },
-    "dependencies": {
-      "@storybook/addons": "5.0.10",
-      "react": "^16.8.1"
-    },
-    "publishConfig": {
-      "access": "public"
-    }
+  "name": "@storybook/addon-i18n",
+  "version": "5.0.0",
+  "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
+  "keywords": [
+    "addon",
+    "i18n",
+    "react",
+    "storybook"
+  ],
+  "homepage": "https://github.com/goooseman/storybook-addon-i18n",
+  "bugs": {
+    "url": "https://github.com/goooseman/storybook-addon-i18nissues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goooseman/storybook-addon-i18n"
+  },
+  "license": "MIT",
+  "author": "goooseman",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "commit": "commit-prompt --no-verify",
+    "precommit": "lint-staged && npm run lint",
+    "prepare": "rimraf dist && tsc",
+    "lint": "npm run lint:tsc && npm run lint:tslint",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
+    "lint:prettier": "prettier --write \"{src,test}/**/*.ts*\"",
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json --fix"
+  },
+  "dependencies": {
+    "@storybook/addons": "5.0.10",
+    "react": "^16.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.6",
+    "@types/react": "^16.8.14",
+    "@types/webpack-env": "^1.13.9",
+    "prettier-config-trucknet-io": "^2.0.1",
+    "rimraf": "^2.6.3",
+    "trucknet-commit": "^1.4.3",
+    "tslint-config-trucknet-io": "^1.5.1",
+    "typescript": "^3.4.4"
   }
-  
+}
