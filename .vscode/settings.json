@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "{src,__tests__}/**/*.js": true,
+    "{src,__tests__}/**/*.js.map": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "tslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}

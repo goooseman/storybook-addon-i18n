@@ -1,15 +1,12 @@
-import { ReactElement } from "react";
+import { FunctionComponent, ReactElement } from "react";
 
 export const ADDON_ID = "storybooks/i18n";
 export const PANEL_ID = `${ADDON_ID}/panel`;
 export const PARAM_KEY = `i18n`;
+import { EventEmitter } from "events";
 export const ADDON_TITLE = "I18n";
 
-export interface API {
-  on(event: string, callback: (...args: unknown[]) => void): void;
-  off(event: string, callback: (...args: unknown[]) => void): void;
-  emit(event: string, callback: (...args: unknown[]) => void): void;
-
+export interface API extends EventEmitter {
   getParameters(id: string, scope?: string): undefined | Parameters;
   getElements(
     type: string
@@ -21,18 +18,9 @@ export interface API {
   };
 }
 
-interface TextParameter {
-  text: string;
+export interface Parameters {
+  provider: React.FunctionComponent;
+  providerProps: object;
+  providerLocaleKey: string;
+  supportedLocales: string[];
 }
-interface MarkdownParameter {
-  markdown: string;
-}
-interface DisabledParameter {
-  disable: boolean;
-}
-
-export type Parameters =
-  | string
-  | TextParameter
-  | MarkdownParameter
-  | DisabledParameter;
