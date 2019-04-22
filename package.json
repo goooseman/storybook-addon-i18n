@@ -1,0 +1,34 @@
+{
+    "name": "@storybook/addon-i18n",
+    "version": "5.0.0",
+    "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
+    "keywords": [
+      "addon",
+      "i18n",
+      "react",
+      "storybook"
+    ],
+    "homepage": "https://github.com/goooseman/storybook-addon-i18n",
+    "bugs": {
+      "url": "https://github.com/goooseman/storybook-addon-i18nissues"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/goooseman/storybook-addon-i18n"
+    },
+    "license": "MIT",
+    "author": "goooseman",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+      "prepare": "echo 'TODO build'"
+    },
+    "dependencies": {
+      "@storybook/addons": "5.0.10",
+      "react": "^16.8.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  
