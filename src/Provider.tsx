@@ -24,7 +24,7 @@ class Provider extends React.Component<Props, State> {
 
   public render() {
     const {
-      provider,
+      provider: ProviderComponent,
       providerProps,
       providerLocaleKey = "locale",
       providerDirectionKey = "direction",
@@ -40,20 +40,16 @@ class Provider extends React.Component<Props, State> {
       return false;
     }
 
-    return React.createElement(
-      "div",
-      {
-        dir: direction
-      },
-      React.createElement(
-        provider,
-        {
-          ...providerProps,
-          [providerLocaleKey]: activeLocale,
-          [providerDirectionKey]: direction
-        },
-        children
-      )
+    const props = {
+      ...providerProps,
+      [providerLocaleKey]: activeLocale,
+      [providerDirectionKey]: direction
+    };
+
+    return (
+      <div dir={direction}>
+        <ProviderComponent {...props}>{children}</ProviderComponent>
+      </div>
     );
   }
 
