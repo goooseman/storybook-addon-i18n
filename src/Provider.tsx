@@ -23,21 +23,47 @@ class Provider extends React.Component<Props, State> {
   }
 
   public render() {
-    const { provider, providerProps, providerLocaleKey, children } = this.props;
+    const {
+      provider,
+      providerProps,
+      providerLocaleKey = "locale",
+      providerDirectionKey = "direction",
+      getDirection,
+      children
+    } = this.props;
     const { activeLocale } = this.state;
+    const direction = getDirection
+      ? getDirection(activeLocale)
+      : this.getDirection(activeLocale);
 
     if (!activeLocale) {
       return false;
     }
+
     return React.createElement(
-      provider,
+      "div",
       {
-        ...providerProps,
-        [providerLocaleKey]: activeLocale
+        dir: direction
       },
-      children
+      React.createElement(
+        provider,
+        {
+          ...providerProps,
+          [providerLocaleKey]: activeLocale,
+          [providerDirectionKey]: direction
+        },
+        children
+      )
     );
   }
+
+  private getDirection = (locale: string): "ltr" | "rtl" => {
+    const rtlLocales = ["he", "ar"];
+    if (rtlLocales.includes(locale)) {
+      return "rtl";
+    }
+    return "ltr";
+  };
 
   private onChanged = (locale: string) => {
     this.setState({
