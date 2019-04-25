@@ -1,5 +1,5 @@
 {
-  "name": "@storybook/addon-i18n",
+  "name": "storybook-addon-i18n",
   "version": "5.0.0",
   "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
   "keywords": [
@@ -10,7 +10,7 @@
   ],
   "homepage": "https://github.com/goooseman/storybook-addon-i18n",
   "bugs": {
-    "url": "https://github.com/goooseman/storybook-addon-i18nissues"
+    "url": "https://github.com/goooseman/storybook-addon-i18n/issues"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,10 @@
   "author": "goooseman",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "register.js",
+    "dist/**/*"
+  ],
   "scripts": {
     "commit": "commit-prompt --no-verify",
     "precommit": "lint-staged && npm run lint",
@@ -27,7 +31,8 @@
     "lint": "npm run lint:tsc && npm run lint:tslint",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "lint:prettier": "prettier --write \"{src,test}/**/*.ts*\"",
-    "lint:tslint": "tslint -c tslint.json -p tsconfig.json --fix"
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "release": "./extra/release.sh"
   },
   "dependencies": {
     "@storybook/addons": "5.0.10",
