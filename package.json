@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-i18n",
-  "version": "0.0.0",
+  "version": "5.0.0",
   "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
   "keywords": [
     "addon",
