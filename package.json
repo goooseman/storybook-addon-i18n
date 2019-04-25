@@ -31,7 +31,8 @@
     "lint": "npm run lint:tsc && npm run lint:tslint",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "lint:prettier": "prettier --write \"{src,test}/**/*.ts*\"",
-    "lint:tslint": "tslint -c tslint.json -p tsconfig.json --fix"
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "release": "./extra/release.sh"
   },
   "dependencies": {
     "@storybook/addons": "5.0.10",
