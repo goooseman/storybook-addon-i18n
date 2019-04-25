@@ -1,6 +1,6 @@
 {
-  "name": "@storybook/addon-i18n",
-  "version": "5.0.0",
+  "name": "storybook-addon-i18n",
+  "version": "0.0.0",
   "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
   "keywords": [
     "addon",
@@ -20,6 +20,10 @@
   "author": "goooseman",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "register.js",
+    "dist/**/*"
+  ],
   "scripts": {
     "commit": "commit-prompt --no-verify",
     "precommit": "lint-staged && npm run lint",

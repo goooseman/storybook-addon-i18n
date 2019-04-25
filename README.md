@@ -14,7 +14,7 @@ It can be used even to test your components in `ltr` and `rtl` fashion.
 ## Installation
 
 ```sh
-npm i -D @storybook/addon-i18n
+npm i -D storybook-addon-i18n
 ```
 
 ## Simple Usage
@@ -25,7 +25,7 @@ npm i -D @storybook/addon-i18n
 
 Create a file called addons.js in your Storybook config, if there is no any and append following line:
 
-`import "@storybook/addon-i18n/register.js";`
+`import "storybook-addon-i18n/register.js";`
 
 Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
 
