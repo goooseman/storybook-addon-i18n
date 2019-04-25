@@ -27,7 +27,7 @@ Create a file called addons.js in your Storybook config, if there is no any and 
 
 `import "@storybook/addon-i18n/register.js";`
 
-Then in your storie's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
+Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
 
 ```
 import { addParameters } from "@storybook/react";
@@ -57,9 +57,9 @@ Library accepts following parameters, which are passed as storybook parameters u
 
 ## Complex usage
 
-If you are using Material-UI, you need to test `jss-rtl` in your storybook too. The problem is that you need to wrap your storybook to `ThemeProvider`, which should recieve a `theme` with correct direction. So how can we pass the direction from this libary to `ThemeProvider`.
+If you are using Material-UI, you need to test `jss-rtl` in your storybook too. The problem is that you need to wrap your storybook to `ThemeProvider`, which should recieve a `theme` with correct direction.
 
-You can check an integration example in my [React boilerplate project](https://github.com/trucknet-io/trucknet-boilerplate-typescript-react)
+You can check an integration example in my [React boilerplate project](https://github.com/trucknet-io/trucknet-boilerplate-typescript-react).
 
 To achive this task a common Provider should be created, which is used and in the Storybook and in the main application bundle. Here is an example:
 
@@ -83,7 +83,7 @@ export class MuiLocaleProvider extends React.PureComponent<WithLocale> {
 }
 ```
 
-This Provider should accept `locale` and `direction` as props and include everything needed for internalization: `LionessProvider` (intl), `MuiThemeProvider` (MUI theme which pass a theme with a correct direction) and `JssProvider` (with `jss-rtl` configured).
+This Provider should accept `locale` and `direction` as props and include everything needed for internalization: `LionessProvider` (intl), `MuiThemeProvider` (MUI theme which receives a `theme` with a correct direction) and `JssProvider` (with `jss-rtl` configured).
 
 Then this provider can be used in storybook config:
 
