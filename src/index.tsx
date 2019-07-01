@@ -4,6 +4,7 @@ import addons, {
   StoryGetter
 } from "@storybook/addons";
 import * as React from "react";
+
 import Provider from "./Provider";
 import { ADDON_ID, Parameters } from "./shared";
 
@@ -13,22 +14,14 @@ export const withI18n = makeDecorator({
   skipIfNoParametersOrOptions: true,
   allowDeprecatedUsage: true,
 
-  wrapper: (
-    getStory: StoryGetter,
-    context: StoryContext,
-    { parameters }: { parameters: Parameters }
-  ) => {
+  wrapper: (getStory: StoryGetter, context: StoryContext, { parameters }) => {
     const channel = addons.getChannel();
-
     channel.emit(`${ADDON_ID}/register`, parameters);
 
-    return React.createElement(
-      Provider,
-      {
-        channel: channel,
-        ...parameters
-      },
-      getStory(context) as React.ReactNode
+    return (
+      <Provider channel={channel} {...(parameters as Parameters)}>
+        {getStory(context) as React.ReactNode}
+      </Provider>
     );
   }
 });
