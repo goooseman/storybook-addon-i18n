@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-i18n",
-  "version": "5.0.0",
+  "version": "5.1.9",
   "description": "Storybook I18n Addon can be used to change locale of the component inside the preview in storybook",
   "keywords": [
     "addon",
@@ -28,6 +28,7 @@
     "commit": "commit-prompt --no-verify",
     "precommit": "lint-staged && npm run lint",
     "prepare": "rimraf dist && tsc",
+    "watch": "tsc -w",
     "lint": "npm run lint:tsc && npm run lint:tslint",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "lint:prettier": "prettier --write \"{src,test}/**/*.ts*\"",
@@ -35,8 +36,9 @@
     "release": "./extra/release.sh"
   },
   "dependencies": {
-    "@storybook/addons": "5.0.10",
-    "@storybook/components": "^5.0.10",
+    "@storybook/addons": "5.1.9",
+    "@storybook/client-api": "5.1.9",
+    "@storybook/components": "5.1.9",
     "react": "^16.8.1"
   },
   "publishConfig": {

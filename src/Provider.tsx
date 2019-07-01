@@ -1,5 +1,7 @@
 import { Channel } from "@storybook/channels";
+import * as api from "@storybook/client-api";
 import * as React from "react";
+
 import { ADDON_ID, Parameters } from "./shared";
 
 interface Props extends Parameters {
@@ -11,12 +13,18 @@ interface State {
 }
 
 class Provider extends React.Component<Props, State> {
-  public state: State = {};
+  constructor(props: Props) {
+    super(props);
+
+    const { activeLocale = props.supportedLocales[0] } = api.getQueryParams();
+    this.state = { activeLocale };
+  }
 
   public componentWillMount() {
     const { channel } = this.props;
     channel.on(`${ADDON_ID}/change`, this.onChanged);
   }
+
   public componentWillUnmount() {
     const { channel } = this.props;
     channel.removeListener(`${ADDON_ID}/change`, this.onChanged);

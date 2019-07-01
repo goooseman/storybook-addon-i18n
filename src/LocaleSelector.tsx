@@ -1,3 +1,4 @@
+import { API } from "@storybook/api";
 import {
   IconButton,
   Icons,
@@ -5,7 +6,7 @@ import {
   WithTooltip
 } from "@storybook/components";
 import * as React from "react";
-import { ADDON_ID, API, Parameters } from "./shared";
+import { ADDON_ID, Parameters } from "./shared";
 
 interface Props {
   api: API;
@@ -44,7 +45,6 @@ export default class LocaleSelector extends React.Component<Props, State> {
     if (!activeLocale) {
       return false;
     }
-    // tslint:disable no-unsafe-any
     return (
       <WithTooltip
         placement="top"
@@ -63,7 +63,6 @@ export default class LocaleSelector extends React.Component<Props, State> {
         </IconButton>
       </WithTooltip>
     );
-    // tslint:enable no-unsafe-any
   };
 
   private getLinks = (locales: string[]) => {
@@ -71,6 +70,8 @@ export default class LocaleSelector extends React.Component<Props, State> {
       id: l,
       title: l,
       value: l,
+      // next line fixes stupid storybook error passing loading=false to span el
+      loading: null,
       onClick: this.getOnLinkSelected(l)
     }));
   };
@@ -104,5 +105,6 @@ export default class LocaleSelector extends React.Component<Props, State> {
       activeLocale: locale
     });
     api.emit(`${ADDON_ID}/change`, locale);
+    api.setQueryParams({ activeLocale: locale });
   };
 }
