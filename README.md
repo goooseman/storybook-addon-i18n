@@ -23,13 +23,15 @@ npm i -D storybook-addon-i18n
 
 ### React
 
-Create a file called addons.js in your Storybook config, if there is no any and append following line:
+1. Create a file called addons.js in your Storybook config, if there is no any and append following line:
 
-`import "storybook-addon-i18n/register.js";`
-
-Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
-
+```js
+import "storybook-addon-i18n/register.js";
 ```
+
+2. Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
+
+```js
 import { addParameters } from "@storybook/react";
 
 addParameters({
@@ -42,6 +44,27 @@ addParameters({
     providerLocaleKey: "locale"
   },
 });
+```
+
+3. Finally, Add decorator in your story's config or in a global config for the project (`config.js`)
+
+- global config (`config.js`)
+
+```js
+import { addDecorator } from "@storybook/react";
+import { withI18n } from "storybook-addon-i18n";
+
+addDecorator(withI18n);
+```
+
+- story's config
+
+```js
+import { storiesOf } from "@storybook/react";
+import { withI18n } from "storybook-addon-i18n";
+
+storiesOf("Button", module)
+  .addDecorator(withI18n);
 ```
 
 ## API
