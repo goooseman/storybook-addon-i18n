@@ -126,7 +126,7 @@ addParameters({
 
 ### react-i18next
 
-Currently, [react-i18next doesn't support other props like `locale` except `i18n`](https://react.i18next.com/latest/i18nextprovider#i-18-nextprovider-props). If you want to use i18n storybook addon, you need to wrap `I18nProvider` using with effect hook.
+Currently, [react-i18next doesn't support other props like `locale` except `i18n`](https://react.i18next.com/latest/i18nextprovider#i-18-nextprovider-props). If you want to use i18n storybook addon, you need to wrap `I18nProvider` with `useEffect` hook.
 
 ```jsx
 export function I18nProviderWrapper({ children, i18n, locale }) {
