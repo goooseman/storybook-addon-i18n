@@ -137,7 +137,7 @@ export function I18nProviderWrapper({ children, i18n, locale }) {
 }
 ```
 
-This Provider wrapper should accept `providerLocaleKey` as props in storybook decorator parameter. If `providerLocaleKey` prop's value is changed, [we can programmatically change the language.](https://www.i18next.com/overview/api#changelanguage)
+This Provider wrapper should accept `providerLocaleKey` as props in storybook decorator parameter. If the props value corresponding to `providerLocaleKey` is changed, [we can programmatically change the language.](https://www.i18next.com/overview/api#changelanguage)
 
 Then this provider can be used in storybook config:
 
@@ -148,7 +148,6 @@ addParameters({
     providerProps: {
       i18n,
     },
-    providerLocaleKey: 'locale',
     supportedLocales,
   },
 });
