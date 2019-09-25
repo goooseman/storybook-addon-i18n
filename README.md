@@ -38,11 +38,11 @@ addParameters({
   i18n: {
     provider: LionessProvider,
     providerProps: {
-      messages,
+      messages
     },
     supportedLocales: ["en", "ru"],
     providerLocaleKey: "locale"
-  },
+  }
 });
 ```
 
@@ -63,8 +63,7 @@ addDecorator(withI18n);
 import { storiesOf } from "@storybook/react";
 import { withI18n } from "storybook-addon-i18n";
 
-storiesOf("Button", module)
-  .addDecorator(withI18n);
+storiesOf("Button", module).addDecorator(withI18n);
 ```
 
 ## API
@@ -108,8 +107,6 @@ export class MuiLocaleProvider extends React.PureComponent<WithLocale> {
 }
 ```
 
-This Provider should accept `locale` and `direction` as props and include everything needed for internalization: `LionessProvider` (intl), `MuiThemeProvider` (MUI theme which receives a `theme` with a correct direction) and `JssProvider` (with `jss-rtl` configured).
-
 Then this provider can be used in storybook config:
 
 ```js
@@ -117,10 +114,10 @@ addParameters({
   i18n: {
     provider: MuiLocaleProvider,
     providerProps: {
-      messages,
+      messages
     },
-    supportedLocales,
-  },
+    supportedLocales
+  }
 });
 ```
 
@@ -146,9 +143,9 @@ addParameters({
   i18n: {
     provider: I18nProviderWrapper,
     providerProps: {
-      i18n,
+      i18n
     },
-    supportedLocales,
-  },
+    supportedLocales
+  }
 });
 ```
