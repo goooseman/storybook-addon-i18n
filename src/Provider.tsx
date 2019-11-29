@@ -20,7 +20,7 @@ class Provider extends React.Component<Props, State> {
     this.state = { activeLocale };
   }
 
-  public componentWillMount() {
+  public UNSAFE_componentWillMount() {
     const { channel } = this.props;
     channel.on(`${ADDON_ID}/change`, this.onChanged);
   }
