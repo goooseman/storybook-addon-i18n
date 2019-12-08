@@ -18,11 +18,8 @@ class Provider extends React.Component<Props, State> {
 
     const { activeLocale = props.supportedLocales[0] } = api.getQueryParams();
     this.state = { activeLocale };
-  }
 
-  public componentWillMount() {
-    const { channel } = this.props;
-    channel.on(`${ADDON_ID}/change`, this.onChanged);
+    props.channel.on(`${ADDON_ID}/change`, this.onChanged);
   }
 
   public componentWillUnmount() {
