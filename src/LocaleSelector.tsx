@@ -70,6 +70,7 @@ export default class LocaleSelector extends React.Component<Props, State> {
       id: l,
       title: l,
       value: l,
+      active: this.state.activeLocale === l,
       // next line fixes stupid storybook error passing loading=false to span el
       loading: null,
       onClick: this.getOnLinkSelected(l)
