@@ -2,7 +2,7 @@ import { Channel } from "@storybook/channels";
 import * as api from "@storybook/client-api";
 import * as React from "react";
 
-import { ADDON_ID, Parameters } from "./shared";
+import { ADDON_ID, Parameters, RTL_LOCALES } from "./shared";
 
 interface Props extends Parameters {
   channel: Channel;
@@ -62,11 +62,7 @@ class Provider extends React.Component<Props, State> {
   }
 
   private getDirection = (locale: string): "ltr" | "rtl" => {
-    const rtlLocales = ["he", "ar"];
-    if (rtlLocales.includes(locale)) {
-      return "rtl";
-    }
-    return "ltr";
+    return RTL_LOCALES.includes(locale.toLowerCase()) ? "rtl" : "ltr";
   };
 
   private onChanged = (locale: string) => {

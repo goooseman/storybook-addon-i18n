@@ -23,25 +23,47 @@ npm i -D storybook-addon-i18n
 
 ### React
 
-Create a file called addons.js in your Storybook config, if there is no any and append following line:
+1. Create a file called addons.js in your Storybook config, if there is no any and append following line:
 
-`import "storybook-addon-i18n/register.js";`
-
-Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
-
+```js
+import "storybook-addon-i18n/register.js";
 ```
+
+2. Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
+
+```js
 import { addParameters } from "@storybook/react";
 
 addParameters({
   i18n: {
     provider: LionessProvider,
     providerProps: {
-      messages,
+      messages
     },
     supportedLocales: ["en", "ru"],
     providerLocaleKey: "locale"
-  },
+  }
 });
+```
+
+3. Finally, Add decorator in your story's config or in a global config for the project (`config.js`)
+
+- global config (`config.js`)
+
+```js
+import { addDecorator } from "@storybook/react";
+import { withI18n } from "storybook-addon-i18n";
+
+addDecorator(withI18n);
+```
+
+- story's config
+
+```js
+import { storiesOf } from "@storybook/react";
+import { withI18n } from "storybook-addon-i18n";
+
+storiesOf("Button", module).addDecorator(withI18n);
 ```
 
 ## API
@@ -57,13 +79,15 @@ Library accepts following parameters, which are passed as storybook parameters u
 
 ## Complex usage
 
+### Material-UI
+
 If you are using Material-UI, you need to test `jss-rtl` in your storybook too. The problem is that you need to wrap your storybook to `ThemeProvider`, which should recieve a `theme` with correct direction.
 
 You can check an integration example in my [React boilerplate project](https://github.com/trucknet-io/trucknet-boilerplate-typescript-react).
 
 To achive this task a common Provider should be created, which is used and in the Storybook and in the main application bundle. Here is an example:
 
-```
+```jsx
 export class MuiLocaleProvider extends React.PureComponent<WithLocale> {
   public render() {
     const { locale, direction } = this.props;
@@ -83,18 +107,45 @@ export class MuiLocaleProvider extends React.PureComponent<WithLocale> {
 }
 ```
 
-This Provider should accept `locale` and `direction` as props and include everything needed for internalization: `LionessProvider` (intl), `MuiThemeProvider` (MUI theme which receives a `theme` with a correct direction) and `JssProvider` (with `jss-rtl` configured).
-
 Then this provider can be used in storybook config:
 
-```
+```js
 addParameters({
   i18n: {
     provider: MuiLocaleProvider,
     providerProps: {
-      messages,
+      messages
     },
-    supportedLocales,
-  },
+    supportedLocales
+  }
+});
+```
+
+### react-i18next
+
+Currently, [react-i18next doesn't support other props like `locale` except `i18n`](https://react.i18next.com/latest/i18nextprovider#i-18-nextprovider-props). If you want to use i18n storybook addon, you need to wrap `I18nProvider` with `useEffect` hook.
+
+```jsx
+export function I18nProviderWrapper({ children, i18n, locale }) {
+  React.useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [i18n, locale]);
+  return <I18nProvider i18n={i18n}>{children}</I18nProvider>;
+}
+```
+
+This Provider wrapper should accept `providerLocaleKey` as props in storybook decorator parameter. If the props value corresponding to `providerLocaleKey` is changed, [we can programmatically change the language.](https://www.i18next.com/overview/api#changelanguage)
+
+Then this provider can be used in storybook config:
+
+```js
+addParameters({
+  i18n: {
+    provider: I18nProviderWrapper,
+    providerProps: {
+      i18n
+    },
+    supportedLocales
+  }
 });
 ```
