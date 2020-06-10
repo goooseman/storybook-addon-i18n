@@ -1,6 +1,17 @@
 # Storybook I18n
 
-Storybook I18n Addon can be used to change locale of the component inside the preview in [Storybook](https://storybook.js.org).
+> Warning! PR's will be reviewed and accepted, but this library is **deprecated** in favor of using [Storybook Addon Contexts](https://github.com/storybookjs/storybook/tree/master/addons/contexts), which can be used in the following way:
+
+```javascript
+  {
+    icon: "globe",
+    title: "Locale",
+    components: [TargemProvider],
+    params: [{name: "en", locale: "en", translations: {...}}],
+  },
+```
+
+Storybook I18n Addon can be used to change the locale of the component inside the preview in [Storybook](https://storybook.js.org).
 
 This is how I18n addon looks like:
 
@@ -38,11 +49,11 @@ addParameters({
   i18n: {
     provider: LionessProvider,
     providerProps: {
-      messages
+      messages,
     },
     supportedLocales: ["en", "ru"],
-    providerLocaleKey: "locale"
-  }
+    providerLocaleKey: "locale",
+  },
 });
 ```
 
@@ -114,10 +125,10 @@ addParameters({
   i18n: {
     provider: MuiLocaleProvider,
     providerProps: {
-      messages
+      messages,
     },
-    supportedLocales
-  }
+    supportedLocales,
+  },
 });
 ```
 
@@ -143,9 +154,9 @@ addParameters({
   i18n: {
     provider: I18nProviderWrapper,
     providerProps: {
-      i18n
+      i18n,
     },
-    supportedLocales
-  }
+    supportedLocales,
+  },
 });
 ```
