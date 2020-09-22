@@ -1,14 +1,35 @@
 # Storybook I18n
 
-> Warning! PR's will be reviewed and accepted, but this library is **deprecated** in favor of using [Storybook Addon Contexts](https://github.com/storybookjs/storybook/tree/master/addons/contexts), which can be used in the following way:
+> Warning! PR's will be reviewed and accepted, but this library is **deprecated** in favor of using [Storybook Globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals#advanced-usage) with [Storybook Decorators](https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking), which can be used in the following way:
 
 ```javascript
-  {
-    icon: "globe",
-    title: "Locale",
-    components: [TargemProvider],
-    params: [{name: "en", locale: "en", translations: {...}}],
+// .storybook/preview.js
+
+export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Internationalization locale',
+    defaultValue: 'en',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'en', right: '🇺🇸', title: 'English' },
+        { value: 'fr', right: '🇫🇷', title: 'Français' },
+        { value: 'es', right: '🇪🇸', title: 'Español' },
+        { value: 'zh', right: '🇨🇳', title: '中文' },
+        { value: 'kr', right: '🇰🇷', title: '한국어' },
+      ],
+    },
   },
+};
+
+export const decorators = [
+  (Story, { globals }) => (
+    <YourI18nProvider locale={globals.locale} translations={translations}">
+      <Story />
+    </YourI18nProvider>
+  ),
+];
 ```
 
 Storybook I18n Addon can be used to change the locale of the component inside the preview in [Storybook](https://storybook.js.org).
