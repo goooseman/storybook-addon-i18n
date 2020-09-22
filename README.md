@@ -55,13 +55,13 @@ npm i -D storybook-addon-i18n
 
 ### React
 
-1. Create a file called addons.js in your Storybook config, if there is no any and append following line:
+1. Add this to the addons array in `.storybook/main.js`:
 
 ```js
-import "storybook-addon-i18n/register.js";
+"storybook-addon-i18n/register"
 ```
 
-2. Then in your story's config or in a global config for the project (`config.js`) add `i18n` key to parameters:
+2. Then in your story's config or in a global config for the project (`preview.js`) add `i18n` key to parameters:
 
 ```js
 import { addParameters } from "@storybook/react";
@@ -78,9 +78,9 @@ addParameters({
 });
 ```
 
-3. Finally, Add decorator in your story's config or in a global config for the project (`config.js`)
+3. Finally, Add decorator in your story's config or in a global config for the project (`preview.js`)
 
-- global config (`config.js`)
+- global config (`preview.js`)
 
 ```js
 import { addDecorator } from "@storybook/react";
