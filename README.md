@@ -25,7 +25,7 @@ export const globalTypes = {
 
 export const decorators = [
   (Story, { globals }) => (
-    <YourI18nProvider locale={globals.locale} translations={translations}">
+    <YourI18nProvider locale={globals.locale} translations={translations}>
       <Story />
     </YourI18nProvider>
   ),
