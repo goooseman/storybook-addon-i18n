@@ -6,7 +6,9 @@
     "addon",
     "i18n",
     "react",
-    "storybook"
+    "storybook",
+    "storybook-addon",
+    "test"
   ],
   "homepage": "https://github.com/goooseman/storybook-addon-i18n",
   "bugs": {
